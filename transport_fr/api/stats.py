@@ -1,6 +1,6 @@
 from geojson import FeatureCollection
 
-from api.transport import TransportAPI
+from transport_fr.api.transport import TransportAPI
 
 
 class StatsAPI(TransportAPI):

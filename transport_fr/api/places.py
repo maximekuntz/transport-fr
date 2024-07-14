@@ -1,5 +1,5 @@
-from api.transport import TransportAPI
-from objects.places import *
+from transport_fr.api.transport import TransportAPI
+from transport_fr.objects.places import *
 
 
 class PlacesAPI(TransportAPI):

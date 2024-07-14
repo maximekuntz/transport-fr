@@ -1,6 +1,6 @@
-from objects.covered_area import *
-from objects.publisher import *
-from objects.resource import *
+from transport_fr.objects.covered_area import *
+from transport_fr.objects.publisher import *
+from transport_fr.objects.resource import *
 
 
 class DatasetSummary:

@@ -1,7 +1,7 @@
 from geojson import GeoJSON
 
-from api.transport import TransportAPI
-from objects.covered_area import AOM
+from transport_fr.api.transport import TransportAPI
+from transport_fr.objects.covered_area import AOM
 
 
 class AOMAPI(TransportAPI):

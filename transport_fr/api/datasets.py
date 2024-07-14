@@ -1,7 +1,7 @@
 from geojson import GeoJSON
 
-from api.transport import TransportAPI
-from objects.datasets import *
+from transport_fr.api.transport import TransportAPI
+from transport_fr.objects.datasets import *
 
 
 class DatasetsAPI(TransportAPI):
