@@ -1,6 +1,6 @@
 from geojson import GeoJSON
 
-from api.transport import TransportAPI
+from transport_fr.api.transport import TransportAPI
 
 
 class GtfsStopsAPI(TransportAPI):
