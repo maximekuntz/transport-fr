@@ -1,5 +1,6 @@
+import geojson
+
 from objects.conversion import *
-from objects.feature import *
 
 
 class Payload:
@@ -16,7 +17,7 @@ class CommunityResource:
         self,
         community_resource_publisher: str,
         datagouv_id: str,
-        features: list[Feature],
+        features: list[geojson.Feature],
         filesize: int,
         format: str,
         id: int,
@@ -82,7 +83,7 @@ class SummarizedResource:
     def __init__(
         self,
         datagouv_id: str,
-        features: list[Feature],
+        features: list[geojson.Feature],
         filesize: int,
         format: str,
         id: int,
@@ -152,7 +153,7 @@ class DetailedResource:
         title: str,
         type: str,
         url: str,
-        features: list[Feature] = None,
+        features: list[geojson.Feature] = None,
         filesize: int = None,
         metadata=None,
         modes: list[str] = None,

@@ -1,3 +1,5 @@
+from geojson import GeoJSON
+
 from api.transport import TransportAPI
 from objects.covered_area import AOM
 
@@ -17,7 +19,8 @@ class AOMAPI(TransportAPI):
         aom = AOM(**response)
         return aom
 
-    def get_all(self):
+    def get_all(self) -> GeoJSON:
         endpoint = f"{self.endpoint}/geojson"
         response = self._process_request(endpoint=endpoint)
-        return response
+        gjson = GeoJSON(response)
+        return gjson

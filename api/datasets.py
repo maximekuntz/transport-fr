@@ -1,3 +1,5 @@
+from geojson import GeoJSON
+
 from api.transport import TransportAPI
 from objects.datasets import *
 
@@ -16,7 +18,8 @@ class DatasetsAPI(TransportAPI):
         dataset = DatasetsDetails(**response)
         return dataset
 
-    def get_geojson(self, id: str):
+    def get_geojson(self, id: str) -> GeoJSON:
         endpoint = f"{self.endpoint}/{id}/geojson"
         response = self._process_request(endpoint=endpoint)
-        return response
+        gjson = GeoJSON(response)
+        return gjson
