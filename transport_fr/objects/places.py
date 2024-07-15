@@ -4,6 +4,10 @@ class Place:
         self.type = type
         self.url = url
 
+    @staticmethod
+    def from_dict(data: dict):
+        return Place(name=data["name"], type=data["type"], url=data["url"])
+
     def __str__(self) -> str:
         return self.name
 
