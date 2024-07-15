@@ -10,13 +10,13 @@ class AOMAPI(TransportAPI):
     def from_coordinates(self, lon: float, lat: float) -> AOM:
         params = {"lon": lon, "lat": lat}
         response = self._process_request(endpoint=self.endpoint, params=params)
-        aom = AOM(**response)
+        aom = AOM.from_dict(response)
         return aom
 
     def from_insee_code(self, insee_code: int) -> AOM:
         endpoint = f"{self.endpoint}/{insee_code}"
         response = self._process_request(endpoint=endpoint)
-        aom = AOM(**response)
+        aom = AOM.from_dict(response)
         return aom
 
     def get_all(self) -> GeoJSON:

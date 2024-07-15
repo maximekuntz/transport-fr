@@ -4,6 +4,10 @@ class Place:
         self.type = type
         self.url = url
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        return Place(name=data["name"], type=data["type"], url=data["url"])
+
     def __str__(self) -> str:
         return self.name
 

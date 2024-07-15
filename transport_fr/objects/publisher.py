@@ -1,7 +1,11 @@
 class Publisher:
-    def __init__(self, name: str, type: str) -> None:
+    def __init__(self, name: str = None, type: str = None) -> None:
         self.name = name
         self.type = type
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return Publisher(name=data["name"], type=data["type"])
 
     def __str__(self) -> str:
         return self.name

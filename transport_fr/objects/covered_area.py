@@ -3,6 +3,10 @@ class City:
         self.insee = insee
         self.name = name
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        return City(insee=data["insee"], name=data["name"])
+
     def __str__(self) -> str:
         return f"{self.name} ({self.insee})"
 
@@ -21,6 +25,11 @@ class Cities(CoveredArea):
         self.name = name
         self.type = type
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        cities = [City.from_dict(city) for city in data["cities"]]
+        return Cities(cities=cities, name=data["name"], type=data["type"])
+
     def __str__(self) -> str:
         return f"{self.name} ({self.cities})"
 
@@ -37,6 +46,12 @@ class Region(CoveredArea):
             raise ValueError(f"type should be 'region'")
         self.type = type
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        return Region(
+            region_name=data["region_name"], name=data["name"], type=data["type"]
+        )
+
     def __str__(self) -> str:
         return f"{self.name} ({self.region_name})"
 
@@ -52,6 +67,12 @@ class Country(CoveredArea):
         if type != "country":
             raise ValueError(f"type should be 'country'")
         self.type = type
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return Country(
+            country_name=data["country_name"], name=data["name"], type=data["type"]
+        )
 
     def __str__(self) -> str:
         return f"{self.name} ({self.country_name})"
@@ -77,6 +98,16 @@ class AOM(CoveredArea):
         self.insee_commune_principale = insee_commune_principale
         self.nom = nom
         self.siren = siren
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        return AOM(
+            departement=data["departement"],
+            forme_juridique=data["forme_juridique"],
+            insee_commune_principale=data["insee_commune_principale"],
+            nom=data["nom"],
+            siren=data["siren"],
+        )
 
     def __str__(self) -> str:
         return self.nom
