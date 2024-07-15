@@ -8,5 +8,5 @@ class PlacesAPI(TransportAPI):
     def query(self, q: str) -> list[Place]:
         params = {"q": q}
         response = self._process_request(endpoint=self.endpoint, params=params)
-        places = [Place(**place) for place in response]
+        places = [Place.from_dict(place) for place in response]
         return places
