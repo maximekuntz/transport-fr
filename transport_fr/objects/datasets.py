@@ -6,7 +6,7 @@ from transport_fr.objects.resource import *
 class DatasetSummary:
     def __init__(
         self,
-        aom: AOM,
+        aom: AOMShortRef,
         community_resources: list[CommunityResource],
         covered_area: CoveredArea,
         created_at: str,
@@ -38,7 +38,7 @@ class DatasetSummary:
 
     @classmethod
     def from_dict(cls, data: dict):
-        aom = AOM.from_dict(data["aom"])
+        aom = AOMShortRef.from_dict(data["aom"])
         community_resources = [
             CommunityResource.from_dict(cr) for cr in data["community_resources"]
         ]
@@ -72,7 +72,7 @@ class DatasetSummary:
 class DatasetsDetails:
     def __init__(
         self,
-        aom: AOM,
+        aom: AOMShortRef,
         community_resources: list[CommunityResource],
         covered_area: CoveredArea,
         created_at: str,
@@ -106,7 +106,7 @@ class DatasetsDetails:
 
     @classmethod
     def from_dict(cls, data: dict):
-        aom = AOM.from_dict(data["aom"])
+        aom = AOMShortRef.from_dict(data["aom"])
         community_resources = [
             CommunityResource.from_dict(cr) for cr in data["community_resources"]
         ]

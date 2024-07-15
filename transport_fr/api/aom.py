@@ -1,22 +1,22 @@
 from geojson import GeoJSON
 
 from transport_fr.api.transport import TransportAPI
-from transport_fr.objects.covered_area import AOM
+from transport_fr.objects.aom import AOMResponse
 
 
 class AOMAPI(TransportAPI):
     endpoint = TransportAPI.endpoint + "/api/aoms"
 
-    def from_coordinates(self, lon: float, lat: float) -> AOM:
+    def from_coordinates(self, lon: float, lat: float) -> AOMResponse:
         params = {"lon": lon, "lat": lat}
         response = self._process_request(endpoint=self.endpoint, params=params)
-        aom = AOM.from_dict(response)
+        aom = AOMResponse.from_dict(response)
         return aom
 
-    def from_insee_code(self, insee_code: int) -> AOM:
+    def from_insee_code(self, insee_code: int) -> AOMResponse:
         endpoint = f"{self.endpoint}/{insee_code}"
         response = self._process_request(endpoint=endpoint)
-        aom = AOM.from_dict(response)
+        aom = AOMResponse.from_dict(response)
         return aom
 
     def get_all(self) -> GeoJSON:
