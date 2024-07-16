@@ -1,3 +1,4 @@
+from datetime import datetime
 import geojson
 
 from transport_fr.objects.conversion import *
@@ -288,11 +289,11 @@ class DetailedResource:
 class ResourceHistory:
     def __init__(
         self,
-        inserted_at: str,
-        last_up_to_date_at: str,
+        inserted_at: datetime,
+        last_up_to_date_at: datetime,
         payload: Payload,
         resource_id: int,
-        updated_at: str,
+        updated_at: datetime,
         resource_latest_url: str = None,
         resource_url: str = None,
         schema_name: str = None,
@@ -319,8 +320,8 @@ class ResourceHistory:
     @staticmethod
     def from_dict(data: dict):
         rh = ResourceHistory(
-            inserted_at=data["inserted_at"],
-            last_up_to_date_at=data["last_up_to_date_at"],
+            inserted_at=datetime.fromisoformat(data["inserted_at"]),
+            last_up_to_date_at=datetime.fromisoformat(data["last_up_to_date_at"]),
             latest_schema_version_to_date=data.get("latest_schema_version_to_date"),
             payload=Payload(),
             permanent_url=data.get("permanent_url"),
@@ -330,7 +331,7 @@ class ResourceHistory:
             schema_name=data.get("schema_name"),
             schema_version=data.get("schema_version"),
             title=data.get("title"),
-            updated_at=data["updated_at"],
+            updated_at=datetime.fromisoformat(data["updated_at"]),
             uuid=data.get("uuid"),
         )
         return rh

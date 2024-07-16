@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from transport_fr.objects.covered_area import *
 from transport_fr.objects.publisher import *
 from transport_fr.objects.resource import *
@@ -9,7 +11,7 @@ class DatasetSummary:
         aom: AOMShortRef,
         community_resources: list[CommunityResource],
         covered_area: CoveredArea,
-        created_at: str,
+        created_at: datetime,
         datagouv_id: str,
         id: str,
         licence: str,
@@ -49,7 +51,7 @@ class DatasetSummary:
             aom=aom,
             community_resources=community_resources,
             covered_area=covered_area,
-            created_at=data["created_at"],
+            created_at=datetime.fromisoformat(data["created_at"]),
             datagouv_id=data["datagouv_id"],
             id=data["id"],
             licence=data["licence"],
@@ -90,7 +92,7 @@ class DatasetsDetails:
         aom: AOMShortRef,
         community_resources: list[CommunityResource],
         covered_area: CoveredArea,
-        created_at: str,
+        created_at: datetime,
         datagouv_id: str,
         history: list[ResourceHistory],
         id: str,
@@ -133,7 +135,7 @@ class DatasetsDetails:
             aom=aom,
             community_resources=community_resources,
             covered_area=covered_area,
-            created_at=data["created_at"],
+            created_at=datetime.fromisoformat(data["created_at"]),
             datagouv_id=data["datagouv_id"],
             history=history,
             id=data["id"],
