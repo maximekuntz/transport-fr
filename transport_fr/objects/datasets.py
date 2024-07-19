@@ -77,7 +77,7 @@ class DatasetsDetails:
         covered_area: CoveredArea,
         created_at: str,
         datagouv_id: str,
-        history: ResourceHistory,
+        history: list[ResourceHistory],
         id: str,
         licence: str,
         page_url: str,
@@ -111,7 +111,7 @@ class DatasetsDetails:
             CommunityResource.from_dict(cr) for cr in data["community_resources"]
         ]
         covered_area = CoveredArea.from_dict(data["covered_area"])
-        history = ResourceHistory.from_dict(data["history"])
+        history = [ResourceHistory.from_dict(h) for h in data["history"]]
         publisher = Publisher.from_dict(data["publisher"])
         resources = [DetailedResource.from_dict(r) for r in data["resources"]]
         return DatasetsDetails(
