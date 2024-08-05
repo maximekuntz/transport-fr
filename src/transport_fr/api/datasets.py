@@ -9,17 +9,14 @@ class DatasetsAPI(TransportAPI):
 
     def get_all(self) -> list[DatasetSummary]:
         response = self._process_request(endpoint=self.endpoint)
-        datasets = [DatasetSummary.from_dict(dataset) for dataset in response]
-        return datasets
+        return [DatasetSummary.from_dict(dataset) for dataset in response]
 
     def get_details(self, id: str) -> DatasetsDetails:
         endpoint = f"{self.endpoint}/{id}"
         response = self._process_request(endpoint=endpoint)
-        dataset = DatasetsDetails.from_dict(response)
-        return dataset
+        return DatasetsDetails.from_dict(response)
 
     def get_geojson(self, id: str) -> GeoJSON:
         endpoint = f"{self.endpoint}/{id}/geojson"
         response = self._process_request(endpoint=endpoint)
-        gjson = GeoJSON(response)
-        return gjson
+        return GeoJSON(response)

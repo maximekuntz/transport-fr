@@ -9,5 +9,4 @@ class GtfsStopsAPI(TransportAPI):
     def query(self, south: float, north: float, west: float, east: float) -> GeoJSON:
         params = {"south": south, "north": north, "west": west, "east": east}
         response = self._process_request(endpoint=self.endpoint, params=params)
-        gjson = GeoJSON(response)
-        return gjson
+        return GeoJSON(response)
